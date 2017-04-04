@@ -8,6 +8,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "knex": "^0.12.9",
+    "locus": "^2.0.1",
     "method-override": "^2.3.8",
     "morgan": "^1.8.1",
     "nodemon": "^1.11.0",

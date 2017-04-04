@@ -90,20 +90,54 @@ router.route('/:id')
 		});
 
 	router.route('/:id/delete')
-	.get(function(req, res){
+	.get( (req, res) => {
 		knex('users')
 			.select('id', 'username', 'fullname')
 			.where({
 				id: req.params.id
 			})
 			.first()
-			.then(function(user){
+			.then((user) => {
 				res.render('users/delete', {
 					user
 				});
 			});
 		});
 
-
-
+		router.route('/:id/posts')
+		    .get(function(req, res) {
+					const data = {};
+	        knex('posts')
+	          .select('user_id','title', 'content')
+	          .where({
+	             user_id: req.params.id
+	          })
+	          .then((posts) => {
+							data.posts=posts;
+							return knex('users')
+								.select('id')
+								.where({
+									id: req.params.id
+								})
+								.first()
+	          })
+						.then((user) => {
+							if (!user) {
+								res.status(404).send('This user is not in table');
+								return
+							}
+							data.user=user;
+							res.render('posts/show', data);
+						});
+		    })
+		    .post(function(req, res) {
+		        knex('posts').insert({
+						user_id: req.params.id,
+						title: req.body.post.title,
+						content: req.body.post.content
+					}
+				).then(function(posts) {
+		                res.redirect(`/users/${req.params.id}/posts`)
+		            });
+		    });
 module.exports = router;

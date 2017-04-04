@@ -8,12 +8,13 @@
 </head>
 <body>
   <h1>All Users</h1>
+  <a href="/">Back to Main Page</a>
   <ul>
     <% users.forEach(function(user){ %>
-       <li><%= user.fullname %> <a href="/users/<%= user.id %>">View</a> <a href="/users/<%= user.id %>/edit">Edit</a> <a href="/users/<%= user.id %>/delete">Delete</a></li>
+       <h3><%= user.fullname %> </h3><a href="/users/<%= user.id %>">View User</a> <div></div> <a href="/users/<%= user.id %>/edit">Edit User</a> <div></div> <a href="/users/<%= user.id %>/delete">Delete User</a> <div></div><a href="/users/<%= user.id %>/posts">View Posts</a>
     <% }); %>
   </ul>
-  <a href="/">Back to Main Page</a>
+
 </body>
 </html>
 
