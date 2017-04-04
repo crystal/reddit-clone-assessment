@@ -31,8 +31,9 @@
 - Seeds Folder (auto generated)
 - Create a `Views` folder (or .ejs files)
 - Create a `Routes` folder
-- Create a `knexfile.js` (check that this is .js)
-- Create an `app.js` file
+- Create a `knexfile.js` file
+- Create a `knex.js` file
+- Create an `app.js` file (note: this is the same as index.js)
 
 ## REST endpoints
 `/` - show main menu
